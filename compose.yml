@@ -1,0 +1,50 @@
+services:
+
+  wordpress:
+    image: wordpress
+    restart: unless-stopped
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: db1
+      WORDPRESS_DB_USER: Simone
+      WORDPRESS_DB_PASSWORD: Pippo-5050$
+      WORDPRESS_DB_NAME: wp-db1
+    volumes:
+      - ./wordpress:/var/www/html
+    depends_on:
+      db1:
+        condition: service_healthy
+        
+  phpmyadmin:
+    image: phpmyadmin
+    restart: unless-stopped
+    ports:
+      - 8081:80
+    environment:
+      PMA_HOST: db1
+      MYSQL_USER: wp-user
+      MYSQL_PASSWORD: wp-password
+      MYSQL_ROOT_PASSWORD: root-password
+    depends_on:
+      db1:
+        condition: service_healthy
+
+  db1:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: wp-db1
+      MYSQL_USER: Simone
+      MYSQL_PASSWORD: Pippo-5050$
+      MYSQL_ROOT_PASSWORD: Sauron-6060$
+    volumes:
+      - ./db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+volumes:
+  wordpress:
+  db1:

@@ -55,11 +55,11 @@ namespace {
     LogHandler::init_error_handler();
     class DUPX_Bootstrap
     {
-        const ARCHIVE_FILENAME   = '2025_07_11___Ceccarelli_Backup_4_7050aff511e2b1d77291_20251107094922_archive.zip';
-        const ARCHIVE_SIZE       = '53322404';
+        const ARCHIVE_FILENAME   = '2025_13_11___Ceccarelli_Backup_5_99cc762878f848ef1910_20251113083716_archive.zip';
+        const ARCHIVE_SIZE       = '53203050';
         const INSTALLER_DIR_NAME = 'dup-installer';
-        const PACKAGE_HASH       = '7050aff-07094922';
-        const SECONDARY_PACKAGE_HASH = 'ab8dd16-07094922';
+        const PACKAGE_HASH       = '99cc762-13083716';
+        const SECONDARY_PACKAGE_HASH = 'ec70075-13083716';
         const VERSION            = '1.5.14';
         const MINIMUM_PHP_VERSION = '7.4';
         const ZIP_MODE_AUTO    = 0;
